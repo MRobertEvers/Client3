@@ -4,6 +4,7 @@
 #include "model.h"
 
 typedef struct {
+    bool temporary;
     int level;
     int y;
     int x;
@@ -20,3 +21,6 @@ typedef struct {
     int bitset;
     int8_t info;
 } Location;
+
+
+void location_free(Location *loc);

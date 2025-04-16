@@ -445,18 +445,18 @@ bool world3d_add_temporary2(World3D *world3d, int level, int x, int y, int z, in
     return (!model && !entity) || world3d_add_loc2(world3d, x, z, y, level, minTileX, minTileZ, maxTileX + 1 - minTileX, maxTileZ - minTileZ + 1, model, entity, bitset, (int8_t)0, yaw, true);
 }
 
-bool world3d_add_loc2(World3D *world3d, int x, int z, int y, int level, int tileX, int tileZ, int tileSizeX, int tileSizeZ, Model *model, Entity *entity, int bitset, int8_t info, int yaw, bool temporary) {
+static Location* world3d_add_loc2_i(World3D *world3d, int x, int z, int y, int level, int tileX, int tileZ, int tileSizeX, int tileSizeZ, Model *model, Entity *entity, int bitset, int8_t info, int yaw) {
     if (!model && !entity) {
-        return false;
+        return NULL;
     }
     for (int tx = tileX; tx < tileX + tileSizeX; tx++) {
         for (int tz = tileZ; tz < tileZ + tileSizeZ; tz++) {
             if (tx < 0 || tz < 0 || tx >= world3d->maxTileX || tz >= world3d->maxTileZ) {
-                return false;
+                return NULL;
             }
             Ground *tile = world3d->levelTiles[level][tx][tz];
             if (tile && tile->locCount >= 5) {
-                return false;
+                return NULL;
             }
         }
     }
@@ -503,17 +503,31 @@ bool world3d_add_loc2(World3D *world3d, int x, int z, int y, int level, int tile
         }
     }
 
-    if (temporary) {
-        world3d->temporaryLocs[world3d->temporaryLocCount++] = loc;
-    }
+    return loc;
+}
+
+static bool world3d_add_loc2_temporary(World3D *world3d, int x, int z, int y, int level, int tileX, int tileZ, int tileSizeX, int tileSizeZ, Model *model, Entity *entity, int bitset, int8_t info, int yaw)
+{
+    Location* loc = world3d_add_loc2_i(world3d, x, z, y, level, tileX, tileZ, tileSizeX, tileSizeZ, model, entity, bitset, info, yaw);
+    if (!loc) return false;
+
+    world3d->temporaryLocs[world3d->temporaryLocCount++] = loc;
 
     return true;
+}
+
+bool world3d_add_loc2(World3D *world3d, int x, int z, int y, int level, int tileX, int tileZ, int tileSizeX, int tileSizeZ, Model *model, Entity *entity, int bitset, int8_t info, int yaw, bool temporary) {
+    if (temporary)
+        return world3d_add_loc2_temporary(world3d, x, z, y, level, tileX, tileZ, tileSizeX, tileSizeZ, model, entity, bitset, info, yaw);
+    else 
+        return world3d_add_loc2_i(world3d, x, z, y, level, tileX, tileZ, tileSizeX, tileSizeZ, model, entity, bitset, info, yaw) != NULL;
 }
 
 void world3d_clear_temporarylocs(World3D *world3d) {
     for (int i = 0; i < world3d->temporaryLocCount; i++) {
         Location *loc = world3d->temporaryLocs[i];
         world3d_remove_loc2(world3d, loc);
+        location_free(loc);
         world3d->temporaryLocs[i] = NULL;
     }
 
@@ -547,7 +561,6 @@ void world3d_remove_loc2(World3D *world3d, Location *loc) {
             }
         }
     }
-    free(loc);
 }
 
 void world3d_set_locmodel(World3D *world3d, int level, int x, int z, Model *model) {
@@ -687,6 +700,8 @@ void world3d_remove_loc(World3D *world3d, int level, int x, int z) {
         Location *loc = tile->locs[l];
         if ((loc->bitset >> 29 & 0x3) == 2 && loc->minSceneTileX == x && loc->minSceneTileZ == z) {
             world3d_remove_loc2(world3d, loc);
+            location_free(loc);
+            tile->locs[l] = NULL;
             return;
         }
     }

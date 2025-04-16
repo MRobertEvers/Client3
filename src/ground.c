@@ -28,6 +28,9 @@ void ground_free(Ground *ground) {
     free(ground->groundDecor);
     free(ground->groundObj);
     for (int loc = 0; loc < 5; loc++) {
+        if (ground->locs[loc]) {
+            location_free(ground->locs[loc]);
+        }
         ground->locs[loc] = NULL;
     }
 
