@@ -1,523 +1,515 @@
-==29564== Memcheck, a memory error detector
-==29564== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==29564== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==29564== Command: ./client 0 0 lowmem members
-==29564== 
+==41194== Memcheck, a memory error detector
+==41194== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==41194== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==41194== Command: ./client 0 0 lowmem members
+==41194== 
 INFO: RS2 user client - release #225
 ERROR: mapdata CRC check failed
 ERROR: mapdata CRC check failed
 ERROR: mapdata CRC check failed
-==29564== 
-==29564== HEAP SUMMARY:
-==29564==     in use at exit: 3,409,594 bytes in 94,483 blocks
-==29564==   total heap usage: 374,464 allocs, 279,981 frees, 568,153,237 bytes allocated
-==29564== 
-==29564== 7 bytes in 1 blocks are definitely lost in loss record 12 of 2,720
-==29564==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x1356DC: gjstr (packet.c:276)
-==29564==    by 0x12654A: loctype_decode (loctype.c:178)
-==29564==    by 0x12602E: loctype_get (loctype.c:66)
-==29564==    by 0x193DB3: drawMinimapLoc (client.c:6294)
-==29564==    by 0x194AB4: createMinimap (client.c:6449)
-==29564==    by 0x192236: client_read (client.c:5825)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 8 bytes in 1 blocks are definitely lost in loss record 19 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x133D6F: objtype_decode (objtype.c:481)
-==29564==    by 0x13258C: objtype_get (objtype.c:81)
-==29564==    by 0x133028: objtype_get_icon (objtype.c:259)
-==29564==    by 0x1A312B: client_draw_interface (client.c:9846)
-==29564==    by 0x1A1A1B: client_draw_sidebar (client.c:9540)
-==29564==    by 0x199F1E: client_draw_game (client.c:7805)
-==29564==    by 0x199C61: client_draw (client.c:7749)
-==29564==    by 0x1135D7: gameshell_run (gameshell.c:112)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 8 bytes in 1 blocks are definitely lost in loss record 20 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x133D8F: objtype_decode (objtype.c:482)
-==29564==    by 0x13258C: objtype_get (objtype.c:81)
-==29564==    by 0x133028: objtype_get_icon (objtype.c:259)
-==29564==    by 0x1A312B: client_draw_interface (client.c:9846)
-==29564==    by 0x1A1A1B: client_draw_sidebar (client.c:9540)
-==29564==    by 0x199F1E: client_draw_game (client.c:7805)
-==29564==    by 0x199C61: client_draw (client.c:7749)
-==29564==    by 0x1135D7: gameshell_run (gameshell.c:112)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 8 bytes in 1 blocks are definitely lost in loss record 21 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x133D6F: objtype_decode (objtype.c:481)
-==29564==    by 0x13258C: objtype_get (objtype.c:81)
-==29564==    by 0x1330DA: objtype_get_icon (objtype.c:273)
-==29564==    by 0x1A312B: client_draw_interface (client.c:9846)
-==29564==    by 0x1A1A1B: client_draw_sidebar (client.c:9540)
-==29564==    by 0x199F1E: client_draw_game (client.c:7805)
-==29564==    by 0x199C61: client_draw (client.c:7749)
-==29564==    by 0x1135D7: gameshell_run (gameshell.c:112)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 8 bytes in 1 blocks are definitely lost in loss record 22 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x133D8F: objtype_decode (objtype.c:482)
-==29564==    by 0x13258C: objtype_get (objtype.c:81)
-==29564==    by 0x1330DA: objtype_get_icon (objtype.c:273)
-==29564==    by 0x1A312B: client_draw_interface (client.c:9846)
-==29564==    by 0x1A1A1B: client_draw_sidebar (client.c:9540)
-==29564==    by 0x199F1E: client_draw_game (client.c:7805)
-==29564==    by 0x199C61: client_draw (client.c:7749)
-==29564==    by 0x1135D7: gameshell_run (gameshell.c:112)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 20 bytes in 2 blocks are definitely lost in loss record 36 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x133D6F: objtype_decode (objtype.c:481)
-==29564==    by 0x13258C: objtype_get (objtype.c:81)
-==29564==    by 0x17CE73: handleInterfaceInput (client.c:1008)
-==29564==    by 0x180F27: client_handle_input (client.c:1671)
-==29564==    by 0x19DB17: draw3DEntityElements (client.c:8752)
-==29564==    by 0x19E414: client_draw_scene (client.c:8893)
-==29564==    by 0x199E61: client_draw_game (client.c:7782)
-==29564==    by 0x199C61: client_draw (client.c:7749)
-==29564==    by 0x1135D7: gameshell_run (gameshell.c:112)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 20 bytes in 2 blocks are definitely lost in loss record 37 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x133D8F: objtype_decode (objtype.c:482)
-==29564==    by 0x13258C: objtype_get (objtype.c:81)
-==29564==    by 0x17CE73: handleInterfaceInput (client.c:1008)
-==29564==    by 0x180F27: client_handle_input (client.c:1671)
-==29564==    by 0x19DB17: draw3DEntityElements (client.c:8752)
-==29564==    by 0x19E414: client_draw_scene (client.c:8893)
-==29564==    by 0x199E61: client_draw_game (client.c:7782)
-==29564==    by 0x199C61: client_draw (client.c:7749)
-==29564==    by 0x1135D7: gameshell_run (gameshell.c:112)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 22 bytes in 1 blocks are definitely lost in loss record 55 of 2,720
-==29564==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x1356DC: gjstr (packet.c:276)
-==29564==    by 0x191070: client_read (client.c:5583)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 24 bytes in 5 blocks are definitely lost in loss record 77 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x131CE3: npctype_decode (npctype.c:138)
-==29564==    by 0x13197D: npctype_get (npctype.c:80)
-==29564==    by 0x1974A8: getNpcPosNewVis (client.c:7043)
-==29564==    by 0x196E1C: getNpcPos (client.c:6930)
-==29564==    by 0x18D55D: client_read (client.c:4744)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 34 bytes in 5 blocks are definitely lost in loss record 579 of 2,720
-==29564==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x1356DC: gjstr (packet.c:276)
-==29564==    by 0x131A41: npctype_decode (npctype.c:100)
-==29564==    by 0x13197D: npctype_get (npctype.c:80)
-==29564==    by 0x1974A8: getNpcPosNewVis (client.c:7043)
-==29564==    by 0x196E1C: getNpcPos (client.c:6930)
-==29564==    by 0x18D55D: client_read (client.c:4744)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 40 bytes in 1 blocks are definitely lost in loss record 1,277 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x133F61: objtype_decode (objtype.c:508)
-==29564==    by 0x13258C: objtype_get (objtype.c:81)
-==29564==    by 0x133028: objtype_get_icon (objtype.c:259)
-==29564==    by 0x1A312B: client_draw_interface (client.c:9846)
-==29564==    by 0x1A1A1B: client_draw_sidebar (client.c:9540)
-==29564==    by 0x199F1E: client_draw_game (client.c:7805)
-==29564==    by 0x199C61: client_draw (client.c:7749)
-==29564==    by 0x1135D7: gameshell_run (gameshell.c:112)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 40 bytes in 1 blocks are definitely lost in loss record 1,278 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x133F7E: objtype_decode (objtype.c:509)
-==29564==    by 0x13258C: objtype_get (objtype.c:81)
-==29564==    by 0x133028: objtype_get_icon (objtype.c:259)
-==29564==    by 0x1A312B: client_draw_interface (client.c:9846)
-==29564==    by 0x1A1A1B: client_draw_sidebar (client.c:9540)
-==29564==    by 0x199F1E: client_draw_game (client.c:7805)
-==29564==    by 0x199C61: client_draw (client.c:7749)
-==29564==    by 0x1135D7: gameshell_run (gameshell.c:112)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 40 bytes in 10 blocks are definitely lost in loss record 1,279 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x1262B3: loctype_decode (loctype.c:129)
-==29564==    by 0x12602E: loctype_get (loctype.c:66)
-==29564==    by 0x194BCD: createMinimap (client.c:6470)
-==29564==    by 0x192236: client_read (client.c:5825)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 40 bytes in 10 blocks are definitely lost in loss record 1,280 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x1262D0: loctype_decode (loctype.c:130)
-==29564==    by 0x12602E: loctype_get (loctype.c:66)
-==29564==    by 0x194BCD: createMinimap (client.c:6470)
-==29564==    by 0x192236: client_read (client.c:5825)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 46 (40 direct, 6 indirect) bytes in 1 blocks are definitely lost in loss record 1,934 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x133CF9: objtype_decode (objtype.c:474)
-==29564==    by 0x13258C: objtype_get (objtype.c:81)
-==29564==    by 0x133028: objtype_get_icon (objtype.c:259)
-==29564==    by 0x1A312B: client_draw_interface (client.c:9846)
-==29564==    by 0x1A1A1B: client_draw_sidebar (client.c:9540)
-==29564==    by 0x199F1E: client_draw_game (client.c:7805)
-==29564==    by 0x199C61: client_draw (client.c:7749)
-==29564==    by 0x1135D7: gameshell_run (gameshell.c:112)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 46 (40 direct, 6 indirect) bytes in 1 blocks are definitely lost in loss record 1,935 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x133C36: objtype_decode (objtype.c:465)
-==29564==    by 0x13258C: objtype_get (objtype.c:81)
-==29564==    by 0x133028: objtype_get_icon (objtype.c:259)
-==29564==    by 0x1A312B: client_draw_interface (client.c:9846)
-==29564==    by 0x1A1A1B: client_draw_sidebar (client.c:9540)
-==29564==    by 0x199F1E: client_draw_game (client.c:7805)
-==29564==    by 0x199C61: client_draw (client.c:7749)
-==29564==    by 0x1135D7: gameshell_run (gameshell.c:112)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 48 bytes in 1 blocks are definitely lost in loss record 2,106 of 2,720
-==29564==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x1679B5: mp_grow (mpi.c:2301)
-==29564==    by 0x1648A5: mp_add_d (mpi.c:522)
-==29564==    by 0x16C932: mp_read_radix (mpi.c:5191)
-==29564==    by 0x1760A6: rsa_init (rsa-libtom.c:7)
-==29564==    by 0x135D45: rsaenc (packet.c:361)
-==29564==    by 0x198AB4: client_login (client.c:7446)
-==29564==    by 0x1984FA: client_update_title (client.c:7338)
-==29564==    by 0x17C228: client_update (client.c:868)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 80 bytes in 1 blocks are definitely lost in loss record 2,590 of 2,720
-==29564==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x1679B5: mp_grow (mpi.c:2301)
-==29564==    by 0x1648A5: mp_add_d (mpi.c:522)
-==29564==    by 0x16C932: mp_read_radix (mpi.c:5191)
-==29564==    by 0x1760CD: rsa_init (rsa-libtom.c:10)
-==29564==    by 0x135D45: rsaenc (packet.c:361)
-==29564==    by 0x198AB4: client_login (client.c:7446)
-==29564==    by 0x1984FA: client_update_title (client.c:7338)
-==29564==    by 0x17C228: client_update (client.c:868)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 84 bytes in 5 blocks are definitely lost in loss record 2,592 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x131C25: npctype_decode (npctype.c:128)
-==29564==    by 0x13197D: npctype_get (npctype.c:80)
-==29564==    by 0x1974A8: getNpcPosNewVis (client.c:7043)
-==29564==    by 0x196E1C: getNpcPos (client.c:6930)
-==29564==    by 0x18D55D: client_read (client.c:4744)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 84 bytes in 5 blocks are definitely lost in loss record 2,593 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x131C42: npctype_decode (npctype.c:129)
-==29564==    by 0x13197D: npctype_get (npctype.c:80)
-==29564==    by 0x1974A8: getNpcPosNewVis (client.c:7043)
-==29564==    by 0x196E1C: getNpcPos (client.c:6930)
-==29564==    by 0x18D55D: client_read (client.c:4744)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 92 (80 direct, 12 indirect) bytes in 2 blocks are definitely lost in loss record 2,596 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x133CF9: objtype_decode (objtype.c:474)
-==29564==    by 0x13258C: objtype_get (objtype.c:81)
-==29564==    by 0x17CE73: handleInterfaceInput (client.c:1008)
-==29564==    by 0x180F27: client_handle_input (client.c:1671)
-==29564==    by 0x19DB17: draw3DEntityElements (client.c:8752)
-==29564==    by 0x19E414: client_draw_scene (client.c:8893)
-==29564==    by 0x199E61: client_draw_game (client.c:7782)
-==29564==    by 0x199C61: client_draw (client.c:7749)
-==29564==    by 0x1135D7: gameshell_run (gameshell.c:112)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 104 bytes in 5 blocks are definitely lost in loss record 2,600 of 2,720
-==29564==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x1356DC: gjstr (packet.c:276)
-==29564==    by 0x131A60: npctype_decode (npctype.c:102)
-==29564==    by 0x13197D: npctype_get (npctype.c:80)
-==29564==    by 0x1974A8: getNpcPosNewVis (client.c:7043)
-==29564==    by 0x196E1C: getNpcPos (client.c:6930)
-==29564==    by 0x18D55D: client_read (client.c:4744)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 128 bytes in 4 blocks are definitely lost in loss record 2,605 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x13227D: objstackentity_new (objstackentity.c:6)
-==29564==    by 0x195D7D: readZonePacket (client.c:6761)
-==29564==    by 0x18EBF6: client_read (client.c:5101)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 144 bytes in 5 blocks are definitely lost in loss record 2,607 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x1319E6: npctype_decode (npctype.c:94)
-==29564==    by 0x13197D: npctype_get (npctype.c:80)
-==29564==    by 0x1974A8: getNpcPosNewVis (client.c:7043)
-==29564==    by 0x196E1C: getNpcPos (client.c:6930)
-==29564==    by 0x18D55D: client_read (client.c:4744)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 147 bytes in 21 blocks are definitely lost in loss record 2,608 of 2,720
-==29564==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x1356DC: gjstr (packet.c:276)
-==29564==    by 0x12654A: loctype_decode (loctype.c:178)
-==29564==    by 0x12602E: loctype_get (loctype.c:66)
-==29564==    by 0x15AB2D: world_add_loc2 (world.c:456)
-==29564==    by 0x15A91F: world_load_locations (world.c:432)
-==29564==    by 0x193A2D: client_build_scene (client.c:6239)
-==29564==    by 0x1920DC: client_read (client.c:5813)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564== 
-==29564== 252 (200 direct, 52 indirect) bytes in 5 blocks are definitely lost in loss record 2,628 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x131B61: npctype_decode (npctype.c:118)
-==29564==    by 0x13197D: npctype_get (npctype.c:80)
-==29564==    by 0x1974A8: getNpcPosNewVis (client.c:7043)
-==29564==    by 0x196E1C: getNpcPos (client.c:6930)
-==29564==    by 0x18D55D: client_read (client.c:4744)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 448 bytes in 64 blocks are definitely lost in loss record 2,642 of 2,720
-==29564==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x1356DC: gjstr (packet.c:276)
-==29564==    by 0x12654A: loctype_decode (loctype.c:178)
-==29564==    by 0x12602E: loctype_get (loctype.c:66)
-==29564==    by 0x19444A: drawMinimapLoc (client.c:6371)
-==29564==    by 0x194AB4: createMinimap (client.c:6449)
-==29564==    by 0x192236: client_read (client.c:5825)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 581 (576 direct, 5 indirect) bytes in 1 blocks are definitely lost in loss record 2,649 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x14AD3D: playerentity_new (playerentity.c:39)
-==29564==    by 0x19905A: client_login (client.c:7538)
-==29564==    by 0x1984FA: client_update_title (client.c:7338)
-==29564==    by 0x17C228: client_update (client.c:868)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 680 bytes in 5 blocks are definitely lost in loss record 2,657 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x13162F: npctype_new (npctype.c:17)
-==29564==    by 0x1317CB: npctype_unpack (npctype.c:51)
-==29564==    by 0x17A2DD: client_load (client.c:360)
-==29564==    by 0x1132A4: gameshell_run (gameshell.c:52)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 2,636 bytes in 50 blocks are definitely lost in loss record 2,682 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x141EE9: pix3d_set_brightness (pix3d.c:298)
-==29564==    by 0x17A21F: client_load (client.c:347)
-==29564==    by 0x1132A4: gameshell_run (gameshell.c:52)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 3,392 bytes in 8 blocks are definitely lost in loss record 2,683 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x131149: npcentity_new (npcentity.c:13)
-==29564==    by 0x197427: getNpcPosNewVis (client.c:7038)
-==29564==    by 0x196E1C: getNpcPos (client.c:6930)
-==29564==    by 0x18D55D: client_read (client.c:4744)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 4,864 bytes in 38 blocks are definitely lost in loss record 2,689 of 2,720
-==29564==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x140DC4: pix3d_init2d (pix3d.c:71)
-==29564==    by 0x133199: objtype_get_icon (objtype.c:293)
-==29564==    by 0x1A312B: client_draw_interface (client.c:9846)
-==29564==    by 0x1A1A1B: client_draw_sidebar (client.c:9540)
-==29564==    by 0x199F1E: client_draw_game (client.c:7805)
-==29564==    by 0x199C61: client_draw (client.c:7749)
-==29564==    by 0x1135D7: gameshell_run (gameshell.c:112)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 5,016 bytes in 1 blocks are definitely lost in loss record 2,690 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x10CDA9: clientstream_new (clientstream.c:192)
-==29564==    by 0x10CDDD: clientstream_opensocket (clientstream.c:197)
-==29564==    by 0x1988EC: client_login (client.c:7426)
-==29564==    by 0x1984FA: client_update_title (client.c:7338)
-==29564==    by 0x17C228: client_update (client.c:868)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 6,957 (232 direct, 6,725 indirect) bytes in 1 blocks are definitely lost in loss record 2,693 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x52E5232: ??? (in /usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4)
-==29564==    by 0x52ED587: ??? (in /usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4)
-==29564==    by 0x52EF89D: ??? (in /usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4)
-==29564==    by 0x52DF872: ??? (in /usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4)
-==29564==    by 0x52CB28D: ??? (in /usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4)
-==29564==    by 0x52CC6F0: ??? (in /usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4)
-==29564==    by 0x4995B13: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3000.0)
-==29564==    by 0x48A237E: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3000.0)
-==29564==    by 0x1B0225: platform_new (sdl2.c:173)
-==29564==    by 0x11325A: gameshell_init_application (gameshell.c:43)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 9,600 (64 direct, 9,536 indirect) bytes in 1 blocks are definitely lost in loss record 2,696 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x125BD5: locentity_new (locentity.c:7)
-==29564==    by 0x15C7A4: world_add_loc2 (world.c:700)
-==29564==    by 0x15A91F: world_load_locations (world.c:432)
-==29564==    by 0x193A2D: client_build_scene (client.c:6239)
-==29564==    by 0x1920DC: client_read (client.c:5813)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 22,680 bytes in 315 blocks are definitely lost in loss record 2,701 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x150499: world3d_add_loc2 (world3d.c:463)
-==29564==    by 0x150176: world3d_add_loc (world3d.c:411)
-==29564==    by 0x15C463: world_add_loc2 (world.c:673)
-==29564==    by 0x15A91F: world_load_locations (world.c:432)
-==29564==    by 0x193A2D: client_build_scene (client.c:6239)
-==29564==    by 0x1920DC: client_read (client.c:5813)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 65,088 bytes in 904 blocks are definitely lost in loss record 2,706 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x150499: world3d_add_loc2 (world3d.c:463)
-==29564==    by 0x150176: world3d_add_loc (world3d.c:411)
-==29564==    by 0x15AD95: world_add_loc2 (world.c:501)
-==29564==    by 0x15A91F: world_load_locations (world.c:432)
-==29564==    by 0x193A2D: client_build_scene (client.c:6239)
-==29564==    by 0x1920DC: client_read (client.c:5813)
-==29564==    by 0x18BA61: client_update_game (client.c:4291)
-==29564==    by 0x17C21A: client_update (client.c:866)
-==29564==    by 0x113560: gameshell_run (gameshell.c:103)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 522,668 (72 direct, 522,596 indirect) bytes in 1 blocks are definitely lost in loss record 2,717 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x13EC1C: pix24_from_archive (pix24.c:80)
-==29564==    by 0x111069: component_get_image (component.c:338)
-==29564==    by 0x1109C0: component_unpack (component.c:226)
-==29564==    by 0x17A3EF: client_load (client.c:375)
-==29564==    by 0x1132A4: gameshell_run (gameshell.c:52)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 814,480 (312 direct, 814,168 indirect) bytes in 1 blocks are definitely lost in loss record 2,718 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x10C19A: rs2_calloc (allocator.c:55)
-==29564==    by 0x127F82: model_from_id (model.c:326)
-==29564==    by 0x1110D4: component_get_model (component.c:353)
-==29564==    by 0x110B12: component_unpack (component.c:247)
-==29564==    by 0x17A3EF: client_load (client.c:375)
-==29564==    by 0x1132A4: gameshell_run (gameshell.c:52)
-==29564==    by 0x113266: gameshell_init_application (gameshell.c:47)
-==29564==    by 0x1A55F2: main (client.c:10407)
-==29564== 
-==29564== 1,730,560 (692,224 direct, 1,038,336 indirect) bytes in 43,264 blocks are definitely lost in loss record 2,720 of 2,720
-==29564==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==29564==    by 0x176BD1: linklist_new (linklist.c:8)
-==29564==    by 0x1A648E: client_new (client.c:10615)
-==29564==    by 0x1A55CC: main (client.c:10405)
-==29564== 
-==29564== LEAK SUMMARY:
-==29564==    definitely lost: 799,782 bytes in 44,752 blocks
-==29564==    indirectly lost: 2,391,442 bytes in 46,289 blocks
-==29564==      possibly lost: 0 bytes in 0 blocks
-==29564==    still reachable: 218,370 bytes in 3,442 blocks
-==29564==         suppressed: 0 bytes in 0 blocks
-==29564== Reachable blocks (those to which a pointer was found) are not shown.
-==29564== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==29564== 
-==29564== For lists of detected and suppressed errors, rerun with: -s
-==29564== ERROR SUMMARY: 40 errors from 40 contexts (suppressed: 0 from 0)
+Packet: 237 PACKETTYPE_237_REBUILD_NORMAL
+Packet: 32 PACKETTYPE_032_CHAT_FILTER_SETTINGS
+Packet: 139 PACKETTYPE_139_UPDATE_UID192
+Packet: 193 PACKETTYPE_193_RESET_CLIENT_VARCACHE
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 175 PACKETTYPE_175_VARP_LARGE
+Packet: 175 PACKETTYPE_175_VARP_LARGE
+Packet: 175 PACKETTYPE_175_VARP_LARGE
+Packet: 175 PACKETTYPE_175_VARP_LARGE
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 136 PACKETTYPE_136_RESET_ANIMS
+Packet: 4 PACKETTYPE_004_MESSAGE_PRIVATE
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 150 PACKETTYPE_150_VARP_SMALL
+Packet: 184 PACKETTYPE_184_PLAYER_INFO
+Packet: 1 PACKETTYPE_001_NPC_INFO
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 7 PACKETTYPE_007_UPDATE_ZONE_PARTIAL_FOLLOWS
+Packet: 223 PACKETTYPE_223_ZONE_PROTO_OBJ_ADD
+Packet: 7 PACKETTYPE_007_UPDATE_ZONE_PARTIAL_FOLLOWS
+Packet: 223 PACKETTYPE_223_ZONE_PROTO_OBJ_ADD
+Packet: 7 PACKETTYPE_007_UPDATE_ZONE_PARTIAL_FOLLOWS
+Packet: 223 PACKETTYPE_223_ZONE_PROTO_OBJ_ADD
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 7 PACKETTYPE_007_UPDATE_ZONE_PARTIAL_FOLLOWS
+Packet: 223 PACKETTYPE_223_ZONE_PROTO_OBJ_ADD
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 135 PACKETTYPE_135_UPDATE_ZONE_FULL_FOLLOWS
+Packet: 98 PACKETTYPE_098_UPDATE_INV_FULL
+Packet: 98 PACKETTYPE_098_UPDATE_INV_FULL
+Packet: 129 PACKETTYPE_129_IFACE_CLOSE
+Packet: 239 PACKETTYPE_239_CAM_RESET
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 2 PACKETTYPE_002_IFACE_SETCOLOUR
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 167 PACKETTYPE_167_IFACE_OPENSIDEOVERLAY
+Packet: 239 PACKETTYPE_239_CAM_RESET
+Packet: 22 PACKETTYPE_022_UPDATE_RUNWEIGHT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 44 PACKETTYPE_044_UPDATE_STAT
+Packet: 68 PACKETTYPE_068_UPDATE_RUNENERGY
+Packet: 132 PACKETTYPE_132_DATA_LAND
+Packet: 132 PACKETTYPE_132_DATA_LAND
+Packet: 132 PACKETTYPE_132_DATA_LAND
+Packet: 80 PACKETTYPE_080_DATA_LAND_DONE
+Packet: 220 PACKETTYPE_220_DATA_LOC
+Packet: 220 PACKETTYPE_220_DATA_LOC
+Packet: 220 PACKETTYPE_220_DATA_LOC
+Packet: 220 PACKETTYPE_220_DATA_LOC
+Packet: 220 PACKETTYPE_220_DATA_LOC
+Packet: 220 PACKETTYPE_220_DATA_LOC
+Packet: 20 PACKETTYPE_020_DATA_LOC_DONE
+Packet: 132 PACKETTYPE_132_DATA_LAND
+Packet: 132 PACKETTYPE_132_DATA_LAND
+Packet: 132 PACKETTYPE_132_DATA_LAND
+Packet: 132 PACKETTYPE_132_DATA_LAND
+Packet: 80 PACKETTYPE_080_DATA_LAND_DONE
+Packet: 184 PACKETTYPE_184_PLAYER_INFO
+Scene Built 1
+Packet: 1 PACKETTYPE_001_NPC_INFO
+Packet: 201 PACKETTYPE_201_IFACE_SETTEXT
+Packet: 54 PACKETTYPE_054_MIDI_SONG
+Packet: 184 PACKETTYPE_184_PLAYER_INFO
+Packet: 1 PACKETTYPE_001_NPC_INFO
+Packet: 184 PACKETTYPE_184_PLAYER_INFO
+Packet: 1 PACKETTYPE_001_NPC_INFO
+Packet: 184 PACKETTYPE_184_PLAYER_INFO
+Packet: 1 PACKETTYPE_001_NPC_INFO
+Packet: 184 PACKETTYPE_184_PLAYER_INFO
+Packet: 1 PACKETTYPE_001_NPC_INFO
+==41194== 
+==41194== HEAP SUMMARY:
+==41194==     in use at exit: 1,663,805 bytes in 7,797 blocks
+==41194==   total heap usage: 361,637 allocs, 353,840 frees, 547,756,993 bytes allocated
+==41194== 
+==41194== 8 bytes in 2 blocks are definitely lost in loss record 16 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x12661E: loctype_decode (loctype.c:185)
+==41194==    by 0x12606E: loctype_get (loctype.c:66)
+==41194==    by 0x15ACFC: world_add_loc2 (world.c:456)
+==41194==    by 0x15AAEE: world_load_locations (world.c:432)
+==41194==    by 0x193A62: client_build_scene (client.c:6254)
+==41194==    by 0x192111: client_read (client.c:5825)
+==41194==    by 0x18BC30: client_update_game (client.c:4292)
+==41194==    by 0x17C3E9: client_update (client.c:867)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 8 bytes in 2 blocks are definitely lost in loss record 17 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x12663B: loctype_decode (loctype.c:186)
+==41194==    by 0x12606E: loctype_get (loctype.c:66)
+==41194==    by 0x15ACFC: world_add_loc2 (world.c:456)
+==41194==    by 0x15AAEE: world_load_locations (world.c:432)
+==41194==    by 0x193A62: client_build_scene (client.c:6254)
+==41194==    by 0x192111: client_read (client.c:5825)
+==41194==    by 0x18BC30: client_update_game (client.c:4292)
+==41194==    by 0x17C3E9: client_update (client.c:867)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 39 bytes in 7 blocks are definitely lost in loss record 1,130 of 2,695
+==41194==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x13571C: gjstr (packet.c:276)
+==41194==    by 0x12638F: loctype_decode (loctype.c:137)
+==41194==    by 0x12606E: loctype_get (loctype.c:66)
+==41194==    by 0x15ACFC: world_add_loc2 (world.c:456)
+==41194==    by 0x15AAEE: world_load_locations (world.c:432)
+==41194==    by 0x193A62: client_build_scene (client.c:6254)
+==41194==    by 0x192111: client_read (client.c:5825)
+==41194==    by 0x18BC30: client_update_game (client.c:4292)
+==41194==    by 0x17C3E9: client_update (client.c:867)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194== 
+==41194== 48 bytes in 1 blocks are definitely lost in loss record 2,091 of 2,695
+==41194==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x167B84: mp_grow (mpi.c:2301)
+==41194==    by 0x164A74: mp_add_d (mpi.c:522)
+==41194==    by 0x16CB01: mp_read_radix (mpi.c:5191)
+==41194==    by 0x176275: rsa_init (rsa-libtom.c:7)
+==41194==    by 0x135D85: rsaenc (packet.c:361)
+==41194==    by 0x198B3E: client_login (client.c:7464)
+==41194==    by 0x198584: client_update_title (client.c:7356)
+==41194==    by 0x17C3F7: client_update (client.c:869)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 56 bytes in 10 blocks are definitely lost in loss record 2,393 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x1262F3: loctype_decode (loctype.c:129)
+==41194==    by 0x12606E: loctype_get (loctype.c:66)
+==41194==    by 0x15ACFC: world_add_loc2 (world.c:456)
+==41194==    by 0x15AAEE: world_load_locations (world.c:432)
+==41194==    by 0x193A62: client_build_scene (client.c:6254)
+==41194==    by 0x192111: client_read (client.c:5825)
+==41194==    by 0x18BC30: client_update_game (client.c:4292)
+==41194==    by 0x17C3E9: client_update (client.c:867)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 56 bytes in 10 blocks are definitely lost in loss record 2,394 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x126310: loctype_decode (loctype.c:130)
+==41194==    by 0x12606E: loctype_get (loctype.c:66)
+==41194==    by 0x15ACFC: world_add_loc2 (world.c:456)
+==41194==    by 0x15AAEE: world_load_locations (world.c:432)
+==41194==    by 0x193A62: client_build_scene (client.c:6254)
+==41194==    by 0x192111: client_read (client.c:5825)
+==41194==    by 0x18BC30: client_update_game (client.c:4292)
+==41194==    by 0x17C3E9: client_update (client.c:867)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 80 bytes in 1 blocks are definitely lost in loss record 2,577 of 2,695
+==41194==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x167B84: mp_grow (mpi.c:2301)
+==41194==    by 0x164A74: mp_add_d (mpi.c:522)
+==41194==    by 0x16CB01: mp_read_radix (mpi.c:5191)
+==41194==    by 0x17629C: rsa_init (rsa-libtom.c:10)
+==41194==    by 0x135D85: rsaenc (packet.c:361)
+==41194==    by 0x198B3E: client_login (client.c:7464)
+==41194==    by 0x198584: client_update_title (client.c:7356)
+==41194==    by 0x17C3F7: client_update (client.c:869)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 147 bytes in 21 blocks are definitely lost in loss record 2,589 of 2,695
+==41194==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x13571C: gjstr (packet.c:276)
+==41194==    by 0x12658A: loctype_decode (loctype.c:178)
+==41194==    by 0x12606E: loctype_get (loctype.c:66)
+==41194==    by 0x15ACFC: world_add_loc2 (world.c:456)
+==41194==    by 0x15AAEE: world_load_locations (world.c:432)
+==41194==    by 0x193A62: client_build_scene (client.c:6254)
+==41194==    by 0x192111: client_read (client.c:5825)
+==41194==    by 0x18BC30: client_update_game (client.c:4292)
+==41194==    by 0x17C3E9: client_update (client.c:867)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194== 
+==41194== 150 (120 direct, 30 indirect) bytes in 3 blocks are definitely lost in loss record 2,590 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x12655A: loctype_decode (loctype.c:175)
+==41194==    by 0x12606E: loctype_get (loctype.c:66)
+==41194==    by 0x15ACFC: world_add_loc2 (world.c:456)
+==41194==    by 0x15AAEE: world_load_locations (world.c:432)
+==41194==    by 0x193A62: client_build_scene (client.c:6254)
+==41194==    by 0x192111: client_read (client.c:5825)
+==41194==    by 0x18BC30: client_update_game (client.c:4292)
+==41194==    by 0x17C3E9: client_update (client.c:867)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 153 bytes in 7 blocks are definitely lost in loss record 2,591 of 2,695
+==41194==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x13571C: gjstr (packet.c:276)
+==41194==    by 0x1263AE: loctype_decode (loctype.c:139)
+==41194==    by 0x12606E: loctype_get (loctype.c:66)
+==41194==    by 0x15ACFC: world_add_loc2 (world.c:456)
+==41194==    by 0x15AAEE: world_load_locations (world.c:432)
+==41194==    by 0x193A62: client_build_scene (client.c:6254)
+==41194==    by 0x192111: client_read (client.c:5825)
+==41194==    by 0x18BC30: client_update_game (client.c:4292)
+==41194==    by 0x17C3E9: client_update (client.c:867)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194== 
+==41194== 581 (576 direct, 5 indirect) bytes in 1 blocks are definitely lost in loss record 2,630 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x14AF0C: playerentity_new (playerentity.c:39)
+==41194==    by 0x1990E4: client_login (client.c:7556)
+==41194==    by 0x198584: client_update_title (client.c:7356)
+==41194==    by 0x17C3F7: client_update (client.c:869)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 2,636 bytes in 50 blocks are definitely lost in loss record 2,662 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x1420B8: pix3d_set_brightness (pix3d.c:298)
+==41194==    by 0x17A3EE: client_load (client.c:348)
+==41194==    by 0x1132E4: gameshell_run (gameshell.c:52)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 6,957 (232 direct, 6,725 indirect) bytes in 1 blocks are definitely lost in loss record 2,670 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x52E5232: ??? (in /usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4)
+==41194==    by 0x52ED587: ??? (in /usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4)
+==41194==    by 0x52EF89D: ??? (in /usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4)
+==41194==    by 0x52DF872: ??? (in /usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4)
+==41194==    by 0x52CB28D: ??? (in /usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4)
+==41194==    by 0x52CC6F0: ??? (in /usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4)
+==41194==    by 0x4995B13: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3000.0)
+==41194==    by 0x48A237E: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3000.0)
+==41194==    by 0x1AF183: platform_new (sdl2.c:173)
+==41194==    by 0x11329A: gameshell_init_application (gameshell.c:43)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 9,600 (64 direct, 9,536 indirect) bytes in 1 blocks are definitely lost in loss record 2,673 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x125C15: locentity_new (locentity.c:7)
+==41194==    by 0x15C7E7: world_add_loc2 (world.c:687)
+==41194==    by 0x15AAEE: world_load_locations (world.c:432)
+==41194==    by 0x193A62: client_build_scene (client.c:6254)
+==41194==    by 0x192111: client_read (client.c:5825)
+==41194==    by 0x18BC30: client_update_game (client.c:4292)
+==41194==    by 0x17C3E9: client_update (client.c:867)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 22,680 bytes in 315 blocks are definitely lost in loss record 2,678 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x150668: world3d_add_loc2 (world3d.c:463)
+==41194==    by 0x150345: world3d_add_loc (world3d.c:411)
+==41194==    by 0x15C632: world_add_loc2 (world.c:673)
+==41194==    by 0x15AAEE: world_load_locations (world.c:432)
+==41194==    by 0x193A62: client_build_scene (client.c:6254)
+==41194==    by 0x192111: client_read (client.c:5825)
+==41194==    by 0x18BC30: client_update_game (client.c:4292)
+==41194==    by 0x17C3E9: client_update (client.c:867)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 65,016 bytes in 903 blocks are definitely lost in loss record 2,683 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x150668: world3d_add_loc2 (world3d.c:463)
+==41194==    by 0x150345: world3d_add_loc (world3d.c:411)
+==41194==    by 0x15AF64: world_add_loc2 (world.c:501)
+==41194==    by 0x15AAEE: world_load_locations (world.c:432)
+==41194==    by 0x193A62: client_build_scene (client.c:6254)
+==41194==    by 0x192111: client_read (client.c:5825)
+==41194==    by 0x18BC30: client_update_game (client.c:4292)
+==41194==    by 0x17C3E9: client_update (client.c:867)
+==41194==    by 0x1135A0: gameshell_run (gameshell.c:104)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 522,668 (72 direct, 522,596 indirect) bytes in 1 blocks are definitely lost in loss record 2,694 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x13EDEB: pix24_from_archive (pix24.c:80)
+==41194==    by 0x1110A9: component_get_image (component.c:338)
+==41194==    by 0x110ADE: component_unpack (component.c:237)
+==41194==    by 0x17A5BE: client_load (client.c:376)
+==41194==    by 0x1132E4: gameshell_run (gameshell.c:52)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== 814,480 (312 direct, 814,168 indirect) bytes in 1 blocks are definitely lost in loss record 2,695 of 2,695
+==41194==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==41194==    by 0x10C1DA: rs2_calloc (allocator.c:55)
+==41194==    by 0x127FC2: model_from_id (model.c:326)
+==41194==    by 0x111114: component_get_model (component.c:353)
+==41194==    by 0x110B52: component_unpack (component.c:247)
+==41194==    by 0x17A5BE: client_load (client.c:376)
+==41194==    by 0x1132E4: gameshell_run (gameshell.c:52)
+==41194==    by 0x1132A6: gameshell_init_application (gameshell.c:47)
+==41194==    by 0x1A4550: main (client.c:10426)
+==41194== 
+==41194== LEAK SUMMARY:
+==41194==    definitely lost: 92,303 bytes in 1,337 blocks
+==41194==    indirectly lost: 1,353,060 bytes in 3,017 blocks
+==41194==      possibly lost: 0 bytes in 0 blocks
+==41194==    still reachable: 218,442 bytes in 3,443 blocks
+==41194==         suppressed: 0 bytes in 0 blocks
+==41194== Reachable blocks (those to which a pointer was found) are not shown.
+==41194== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==41194== 
+==41194== For lists of detected and suppressed errors, rerun with: -s
+==41194== ERROR SUMMARY: 18 errors from 18 contexts (suppressed: 0 from 0)

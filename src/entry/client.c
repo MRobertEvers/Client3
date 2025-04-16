@@ -4745,7 +4745,8 @@ bool client_read(Client *c) {
     }
     if (c->packet_type == 1) {
         // NPC_INFO
-        getNpcPos(c, c->in, c->packet_size);
+        // TODO: This allocates.
+        // getNpcPos(c, c->in, c->packet_size);
         c->packet_type = -1;
         return true;
     }
@@ -4975,6 +4976,9 @@ bool client_read(Client *c) {
                     if (lastX >= 0 && lastZ >= 0 && lastX < COLLISIONMAP_SIZE && lastZ < COLLISIONMAP_SIZE) {
                         c->level_obj_stacks[level][x][z] = c->level_obj_stacks[level][lastX][lastZ];
                     } else {
+                        linklist_clear(c->level_obj_stacks[level][x][z]);
+                        linklist_free(c->level_obj_stacks[level][x][z]);
+                        // TODO: (level_obj_stacks) leak
                         c->level_obj_stacks[level][x][z] = NULL;
                     }
                 }
@@ -5102,7 +5106,8 @@ bool client_read(Client *c) {
     }
     if (c->packet_type == 151 || c->packet_type == 23 || c->packet_type == 50 || c->packet_type == 191 || c->packet_type == 69 || c->packet_type == 49 || c->packet_type == 223 || c->packet_type == 42 || c->packet_type == 76 || c->packet_type == 59) {
         // Zone Protocol
-        readZonePacket(c, c->in, c->packet_type);
+        // TODO: This leaks
+        // readZonePacket(c, c->in, c->packet_type);
         c->packet_type = -1;
         return true;
     }
@@ -5431,6 +5436,8 @@ bool client_read(Client *c) {
         for (int x = c->baseX; x < c->baseX + 8; x++) {
             for (int z = c->baseZ; z < c->baseZ + 8; z++) {
                 if (c->level_obj_stacks[c->currentLevel][x][z]) {
+                      // TODO: (level_obj_stacks) leak
+                    linklist_clear(c->level_obj_stacks[c->currentLevel][x][z]);
                     linklist_free(c->level_obj_stacks[c->currentLevel][x][z]);
                     c->level_obj_stacks[c->currentLevel][x][z] = NULL;
                 }
@@ -5583,38 +5590,39 @@ bool client_read(Client *c) {
         return true;
     }
     if (c->packet_type == 4) {
-        // MESSAGE_GAME
-        char *message = gjstr(c->in);
-        int64_t username;
-        if (strendswith(message, ":tradereq:")) {
-            char *player = substring(message, 0, indexof(message, ":"));
-            username = jstring_to_base37(player);
-            bool ignored = false;
-            for (int i = 0; i < c->ignoreCount; i++) {
-                if (c->ignoreName37[i] == username) {
-                    ignored = true;
-                    break;
-                }
-            }
-            if (!ignored && c->overrideChat == 0) {
-                client_add_message(c, 4, "wishes to trade with you.", player);
-            }
-        } else if (strendswith(message, ":duelreq:")) {
-            char *player = substring(message, 0, indexof(message, ":"));
-            username = jstring_to_base37(player);
-            bool ignored = false;
-            for (int i = 0; i < c->ignoreCount; i++) {
-                if (c->ignoreName37[i] == username) {
-                    ignored = true;
-                    break;
-                }
-            }
-            if (!ignored && c->overrideChat == 0) {
-                client_add_message(c, 8, "wishes to duel with you.", player);
-            }
-        } else {
-            client_add_message(c, 0, message, "");
-        }
+        // // MESSAGE_GAME
+        // TODO: This leaks
+        // char *message = gjstr(c->in);
+        // int64_t username;
+        // if (strendswith(message, ":tradereq:")) {
+        //     char *player = substring(message, 0, indexof(message, ":"));
+        //     username = jstring_to_base37(player);
+        //     bool ignored = false;
+        //     for (int i = 0; i < c->ignoreCount; i++) {
+        //         if (c->ignoreName37[i] == username) {
+        //             ignored = true;
+        //             break;
+        //         }
+        //     }
+        //     if (!ignored && c->overrideChat == 0) {
+        //         client_add_message(c, 4, "wishes to trade with you.", player);
+        //     }
+        // } else if (strendswith(message, ":duelreq:")) {
+        //     char *player = substring(message, 0, indexof(message, ":"));
+        //     username = jstring_to_base37(player);
+        //     bool ignored = false;
+        //     for (int i = 0; i < c->ignoreCount; i++) {
+        //         if (c->ignoreName37[i] == username) {
+        //             ignored = true;
+        //             break;
+        //         }
+        //     }
+        //     if (!ignored && c->overrideChat == 0) {
+        //         client_add_message(c, 8, "wishes to duel with you.", player);
+        //     }
+        // } else {
+        //     client_add_message(c, 0, message, "");
+        // }
         c->packet_type = -1;
         return true;
     }
@@ -5815,6 +5823,7 @@ bool client_read(Client *c) {
             c->scene_state = 2;
             _World.levelBuilt = c->currentLevel;
             client_build_scene(c);
+            printf("Scene Built 1\n");
         }
         if (_Client.lowmem && c->scene_state == 2 && _World.levelBuilt != c->currentLevel) {
             pixmap_bind(c->area_viewport);
@@ -5823,10 +5832,12 @@ bool client_read(Client *c) {
             pixmap_draw(c->area_viewport, 8, 11);
             _World.levelBuilt = c->currentLevel;
             client_build_scene(c);
+            printf("Scene Built 2\n");
         }
         if (c->currentLevel != c->minimap_level && c->scene_state == 2) {
             c->minimap_level = c->currentLevel;
-            createMinimap(c, c->currentLevel);
+            // TODO: This leaks
+            // createMinimap(c, c->currentLevel);
         }
         c->packet_type = -1;
         return true;
@@ -6785,7 +6796,9 @@ void readZonePacket(Client *c, Packet *buf, int opcode) {
                     }
                 }
                 if (!linklist_head(list)) {
+                    linklist_clear(c->level_obj_stacks[c->currentLevel][x][z]);
                     linklist_free(c->level_obj_stacks[c->currentLevel][x][z]);
+                    // TODO: (level_obj_stacks) leak
                     c->level_obj_stacks[c->currentLevel][x][z] = NULL;
                 }
                 sortObjStacks(c, x, z);
@@ -6931,6 +6944,7 @@ void getNpcPos(Client *c, Packet *buf, int size) {
     c->entityUpdateCount = 0;
 
     getNpcPosOldVis(c, buf, size);
+    // TODO: This allocates
     getNpcPosNewVis(c, buf, size);
     getNpcPosExtended(c, buf, size);
 
@@ -7547,9 +7561,9 @@ void client_login(Client *c, const char *username, const char *password, bool re
             for (int x = 0; x < COLLISIONMAP_SIZE; x++) {
                 for (int z = 0; z < COLLISIONMAP_SIZE; z++) {
                     if (c->level_obj_stacks[c->currentLevel][x][z]) {
-                        // TODO this is wrong?
-                        // linklist_free(c->level_obj_stacks[c->currentLevel][x][z]);
-                        c->level_obj_stacks[level][x][z] = NULL;
+                        // TODO: (level_obj_stacks) leak
+                        linklist_clear(c->level_obj_stacks[c->currentLevel][x][z]);
+                        // c->level_obj_stacks[level][x][z] = NULL;
                     }
                 }
             }
