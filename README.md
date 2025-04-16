@@ -1,3 +1,13 @@
+# Readme
+
+```
+./client 0 0 lowmem members
+
+valgrind --leak-check=full ./client 0 0 lowmem members
+
+valgrind --leak-check=full ./client 0 0 lowmem members > log.txt  2>&1
+```
+
 # RuneScape 2 revision #225 (18 May 2004) C99 port
 Portable single-threaded C client for early RS2, the last update before a new cache format and ondemand protocol.
 
@@ -19,7 +29,7 @@ no midi fading, old js code for IE: https://github.com/2004Scape/Server/blob/61b
 
 wordfilter isn't ported yet, so you will see your own swear words but others don't as it gets filtered by the server still.
 
-locs like fires have no animations as pushLocs is disabled for now, it constantly allocates memory due to always calling model_copy_faces in loctype which requires a different approach. The leaks get worse if the dynamic model cache can't fit all sequences (animations) of the models in an area, disable the allocator to see origins.
+locs like fires have no animations as pushLocs is disabled for now, it constantly allocates memory due to always calling model_new_share_vertexy_faces in loctype which requires a different approach. The leaks get worse if the dynamic model cache can't fit all sequences (animations) of the models in an area, disable the allocator to see origins.
 
 there are a few more memleaks to work out, also make sure playground doesn't leak anymore after attempting to fix this. Examples: inputtracking (when flagged which happens on report now lol), model_calculate_normals (on interfaces too like newcomer map), can't easily free component model/pix24 as they get modified in packets so the global component doesn't own that memory anymore.
 
