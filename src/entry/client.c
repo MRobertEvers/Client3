@@ -30,6 +30,7 @@
 #include "../objstackentity.h"
 #include "../objtype.h"
 #include "../packet.h"
+#include "../packettype.h"
 #include "../pix24.h"
 #include "../pix3d.h"
 #include "../pix8.h"
@@ -4357,6 +4358,7 @@ void client_update_game(Client *c) {
             client_try_reconnect(c);
         }
 
+        // Appears that none of these allocate
         updatePlayers(c);
         updateNpcs(c);
         updateEntityChats(c);
@@ -4636,6 +4638,8 @@ bool client_read(Client *c) {
     c->last_packet_type2 = c->last_packet_type1;
     c->last_packet_type1 = c->last_packet_type0;
     c->last_packet_type0 = c->packet_type;
+
+    printf("Packet: %d %s\n", c->packet_type, packettype_cstr(c->packet_type));
 
     if (c->packet_type == 150) {
         // VARP_SMALL
@@ -7781,6 +7785,7 @@ void client_draw_game(Client *c) {
     if (c->scene_state == 2) {
         client_draw_scene(c);
     }
+    return;
 
     if (c->menu_visible && c->menu_area == 1) {
         c->redraw_sidebar = true;
@@ -8794,10 +8799,10 @@ static void draw3DEntityElements(Client *c) {
 
 void client_draw_scene(Client *c) {
     c->scene_cycle++;
-    pushPlayers(c);
-    pushNpcs(c);
-    pushProjectiles(c);
-    pushSpotanims(c);
+    // pushPlayers(c);
+    // pushNpcs(c);
+    // pushProjectiles(c);
+    // pushSpotanims(c);
     // TODO re-add
     // pushLocs(c);
 
@@ -8887,10 +8892,10 @@ void client_draw_scene(Client *c) {
     pix2d_clear();
     world3d_draw(c->scene, c->cameraX, c->cameraY, c->cameraZ, level, c->cameraYaw, c->cameraPitch, _Client.loop_cycle);
     world3d_clear_temporarylocs(c->scene);
-    draw2DEntityElements(c);
-    drawTileHint(c);
-    updateTextures(c, jitter);
-    draw3DEntityElements(c);
+    // draw2DEntityElements(c);
+    // drawTileHint(c);
+    // updateTextures(c, jitter);
+    // draw3DEntityElements(c);
     pixmap_draw(c->area_viewport, 8, 11);
     c->cameraX = cameraX;
     c->cameraY = cameraY;

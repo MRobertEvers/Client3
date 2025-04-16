@@ -6,7 +6,8 @@
                 "${workspaceFolder}/**"
             ],
             "defines": [
-                "client=1"
+                "client=1",
+                "playground=1"
             ],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c17",

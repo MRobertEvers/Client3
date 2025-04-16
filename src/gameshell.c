@@ -100,6 +100,7 @@ void gameshell_run(Client *c) {
 
         delay_ticks(delta);
         while (count < 256) {
+            // Game loop
             client_update(c);
             c->shell->mouse_click_button = 0;
             c->shell->key_queue_read_pos = c->shell->key_queue_write_pos;
